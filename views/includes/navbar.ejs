@@ -1,0 +1,79 @@
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listings"
+      ><i class="fa-regular fa-compass"></i
+    ></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-nav navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="/listings"
+          >Explore</a>
+       
+      </div>
+
+      <p>
+        <button
+          class="btn btn-primary toggle-button"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseWidthExample"
+          aria-expanded="false"
+          aria-controls="collapseWidthExample"
+        >
+          <i class="fa-solid fa-bars" style="color: black !important"></i>
+
+          <i
+            class="fa-solid fa-user"
+            style="color: black !important; padding-left: 15px !important"
+          ></i>
+        </button>
+      </p>
+      <div style="min-height: 120px" class="collapse-btn">
+        <div class="collapse collapse-horizontal" id="collapseWidthExample">
+          <div class="card card-body" style="width: 150px">
+            <div class="navbar-nav ms-auto btn-container">
+              <!-- <a class="nav-link" href="/listings/new"><i class="fa-solid fa-globe"></i></a> -->
+              <a class="nav-link ancher-tag" href="/listings/new"
+                >Airbnb your home</a
+              >
+              <% if(!currUser) { %>
+
+              <a class="nav-link ancher-tag" href="/signup"
+                >Sign up <i class="fa-solid fa-id-card"></i>
+              </a>
+
+              <a class="nav-link ancher-tag" href="/login"
+                >Login <i class="fa-solid fa-right-to-bracket"></i
+              ></a>
+
+              <% }%> <% if(currUser) { %>
+
+              <a class="nav-link ancher-tag" href="/logout">Log Out</a>
+
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="navbar-search mx-auto">
+        <form class="d-flex" role="search">
+          <input
+            class="form-control me-2 search-bar"
+            type="search"
+            placeholder="Search Destinations"
+            aria-label="Search"
+          />
+          <button class="btn btn-search" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</nav>
