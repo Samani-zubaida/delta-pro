@@ -66,3 +66,10 @@ module.exports.index = async (req, res) => {
             req.flash("success", "Successfully deleted");
             res.redirect("/listings");
           };
+
+          // module.exports.searchListing = async (req,res) => {
+          //   let {country} = req.params;
+          //   let listings = await Listing.find({country});
+          //   res.send("these are the country");
+          //   // res.render("listings/search.ejs" , {listings , country});
+          // }

@@ -13,6 +13,7 @@ router
   .route("/")
   .get(validateListing, wrapAsync(listingControllers.index))
   .post(loggedIn,validateListing,upload.single('listing[image]'),wrapAsync(listingControllers.createListing))
+  // .get(validateListing,wrapAsync(listingControllers.searchListing)); 
 
 router.get("/new", loggedIn, listingControllers.renderNewForm);
 

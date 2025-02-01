@@ -64,16 +64,27 @@
       </div>
 
       <div class="navbar-search mx-auto">
-        <form class="d-flex" role="search">
+        <form method="get" action="/search" class="d-flex" role="search">
           <input
             class="form-control me-2 search-bar"
             type="search"
+            id="search-bar"
             placeholder="Search Destinations"
             aria-label="Search"
+            name="search"
           />
-          <button class="btn btn-search" type="submit">Search</button>
+
+          
+            <button  class="btn btn-search" type="submit">Search</button>
+          
+
         </form>
       </div>
     </div>
   </div>
 </nav>
+
+<script>
+//  let search = document.getElementById("search-bar");
+//  console.log(search.value);
+</script>
