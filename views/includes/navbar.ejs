@@ -17,6 +17,8 @@
           >Explore</a>
        
       </div>
+    
+    
 
       <p>
         <button
@@ -65,6 +67,11 @@
 
       <div class="navbar-search mx-auto">
         <form method="get" action="/search" class="d-flex" role="search">
+          <select name="filter" class="form-select form-select-sm option">
+            <option value="title">Title</option>
+            <option value="price">Price</option>
+            <option value="country">Country</option>
+          </select>
           <input
             class="form-control me-2 search-bar"
             type="search"

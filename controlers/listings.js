@@ -2,6 +2,7 @@ const Listing = require("../models/listing");
 
 module.exports.index = async (req, res) => {
     let allListings = await Listing.find({});
+    console.log(allListings);
     res.render("listings/index.ejs", { allListings });
   };
 
@@ -26,10 +27,14 @@ module.exports.index = async (req, res) => {
     let url = req.file.path;
     let fileName = req.file.filename;
       const newListing = new Listing(req.body.listing);
+      console.log(req.body.listing.category);
       newListing.owner = req.user._id;
       newListing.image = {url , fileName}
+      console.log(newListing);
       await newListing.save();
       req.flash("success", "New Listing Created");
+
+      // console.log(category.enum);
       res.redirect("/listings");
     };
 

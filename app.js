@@ -2,6 +2,7 @@ if(process.env.NODE_ENV != "production"){
   require("dotenv").config();
 }
 
+
 // BASIC SETUP(STEP 1) --> (STEP 2) --> listing.js
 const express = require("express");
 const app = express();
@@ -15,9 +16,8 @@ const session = require("express-session");
 const MongoStore = require('connect-mongo');
 const flash = require("connect-flash");
 const passport = require("passport");
-const LocalStrategy = require("passport-local")
+const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
-const Listing = require("./models/listing.js");
 
 const dbUrl = process.env.ATLASDB_URL
 
@@ -61,6 +61,9 @@ passport.deserializeUser(User.deserializeUser());
 const listingsRouter = require("./routes/listing.js");
 const reviewsRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
+const searchRouter = require("./routes/search.js");
+
+
 
 main()
   .then(() => {
@@ -106,6 +109,7 @@ app.use((req,res,next) => {
   app.use("/listings" , listingsRouter);
   app.use("/listings/:id/reviews" , reviewsRouter);
   app.use("/" , userRouter);
+  app.use("/search" , searchRouter);
 
 
   
@@ -128,18 +132,7 @@ app.use((req,res,next) => {
   //Reviews
   //post route
 
-  app.get("/search" , async (req,res) => {
-    let {id} = req.params;
-   let listings = await Listing.find({});
-    let allListings = await Listing.findById(id).populate({path:"country"});
-    console.log(allListings);
-    const inp = req.query;
-    console.log(inp);
 
-    // console.log(allListing.country);
-    res.render("./listings/search.ejs" , {listings , inp});
-
-  })
 
 app.all("*", (req, res, next) => {
   next(new ExpressError(404, "page not found"));
