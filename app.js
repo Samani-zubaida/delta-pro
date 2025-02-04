@@ -2,8 +2,6 @@ if(process.env.NODE_ENV != "production"){
   require("dotenv").config();
 }
 
-
-// BASIC SETUP(STEP 1) --> (STEP 2) --> listing.js
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -84,10 +82,6 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
-//ROOT ROUTE
-// app.get("/", (req, res) => {
-//   res.send("root is here");
-// });
 
 app.use((req,res,next) => {
   res.locals.success = req.flash("success");
@@ -96,42 +90,10 @@ app.use((req,res,next) => {
   next();
 });
 
-// app.get("/demouser" ,async (req,res) => {
-//   let fakeUser = new User({
-//     email: "user@getMaxListeners.com",
-//     username : "delta-student",
-//   });
-
-//  let registredUser = await User.register(fakeUser , "helloworld");
-//  res.send(registredUser);
-// })
-
   app.use("/listings" , listingsRouter);
   app.use("/listings/:id/reviews" , reviewsRouter);
   app.use("/" , userRouter);
-  app.use("/search" , searchRouter);
-
-
-  
-//TESTING MODEL (STEP 3) --> (STEP 4) --> DATA.JS
-// app.get("/testlisting" , async (req,res) => {
-//     let sampleListing = new Listing({
-//       title : "My new villa",
-//       discriptions: "by beech",
-//       price: 1000000,
-//       location: "Bali",
-//       country: "india"
-// //     });
-
-//     await  sampleListing.save();
-//     console.log("sample saved");
-//     res.send("sample saved");
-// })
-
-//INDEX ROUTE (STEP 6)
-  //Reviews
-  //post route
-
+  app.use("/search" , searchRouter)
 
 
 app.all("*", (req, res, next) => {
